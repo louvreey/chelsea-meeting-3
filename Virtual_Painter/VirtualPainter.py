@@ -27,9 +27,13 @@ while True:
     res, frame = cap.read()
     frame[0: 125, 0: 1280] = header
     frame = cv2.flip(frame, 1)
-    print(frame)
     frame = detector.findHands(frame)
     lmList = detector.findPosition(frame, draw=True)
+    if len(lmList) != 0:
+        x1, y1 = lmList[8][1:]
+        x2, y2 = lmList[12][1:]
+    fingers = detector.fingersUp()
+    print(fingers)
     cv2.imshow("Frame", frame)
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break

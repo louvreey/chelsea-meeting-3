@@ -37,3 +37,24 @@ class handDetector():
                 if draw:
                     cv2.circle(frame, (cx, cy), 7, (255, 0, 0), cv2.FILLED)
         return self.lmList
+
+    def fingersUp(self):
+        fingers = []
+        tipIds = [4, 8, 12, 16, 20]
+
+        print(self.lmList)
+
+        # Jempol
+        if self.lmList[tipIds[0]][1] < self.lmList[tipIds[0] - 1][1]:
+            fingers.append(1)
+        else:
+            fingers.append(0)
+
+        # Jari telunjuk - Jari Kelingking
+        for id in range(1, 5):
+            if self.lmList[tipIds[id]][2] < self.lmList[tipIds[id] - 2][2]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+
+        return fingers
