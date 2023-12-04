@@ -40,24 +40,24 @@ while True:
         x2, y2 = lmList[12][1:]
     fingers = detector.fingersUp()
     print(fingers)
-    # if fingers[1] and fingers[2]:
-    #     xp, yp = 0, 0
-    #     print("SELECTION MODE")
-    #     cv2.rectangle(frame, (x1, y1 - 25), (x2, y2 + 25),
-    #                   drawColor, cv2.FILLED)
-    #     if y1 < 125:
-    #         if 320 < x1 < 480:
-    #             header = overlayList[0]
-    #             drawColor = (0, 0, 255)
-    #         elif 480 < x1 < 630:
-    #             header = overlayList[1]
-    #             drawColor = (0, 255, 0)
-    #         elif 630 < x1 < 840:
-    #             header = overlayList[2]
-    #             drawColor = (255, 0, 0)
-    #         elif x1 < 1000:
-    #             header = overlayList[3]
-    #             drawColor = (0, 0, 0)
+    if fingers[1] and fingers[2]:
+        xp, yp = 0, 0
+        print("SELECTION MODE")
+        cv2.rectangle(frame, (x1, y1 - 25), (x2, y2 + 25),
+                      drawColor, cv2.FILLED)
+        if y1 < 125:
+            if 320 < x1 < 480:
+                header = overlayList[0]
+                drawColor = (0, 0, 255)
+            elif 480 < x1 < 630:
+                header = overlayList[1]
+                drawColor = (0, 255, 0)
+            elif 630 < x1 < 840:
+                header = overlayList[2]
+                drawColor = (255, 0, 0)
+            elif x1 < 1000:
+                header = overlayList[3]
+                drawColor = (0, 0, 0)
 
     cv2.imshow("Frame", frame)
     if cv2.waitKey(10) & 0xFF == ord('q'):
