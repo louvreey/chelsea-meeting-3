@@ -45,14 +45,14 @@ class handDetector():
         print(self.lmList)
 
         # Jempol
-        if self.lmList[tipIds[0]][1] < self.lmList[tipIds[0] - 1][1]:
+        if tipIds[0] > 0 and tipIds[0] - 1 < len(self.lmList) and self.lmList[tipIds[0]][1] < self.lmList[tipIds[0] - 1][1]:
             fingers.append(1)
         else:
             fingers.append(0)
 
         # Jari telunjuk - Jari Kelingking
         for id in range(1, 5):
-            if self.lmList[tipIds[id]][2] < self.lmList[tipIds[id] - 2][2]:
+            if tipIds[id] > 1 and tipIds[id] - 2 < len(self.lmList) and self.lmList[tipIds[id]][2] < self.lmList[tipIds[id] - 2][2]:
                 fingers.append(1)
             else:
                 fingers.append(0)
